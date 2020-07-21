@@ -15,6 +15,10 @@ switch ($table) {
         $data['text'] = $_POST['text'];
         $data['sh'] = 0;
         break;
+    case "admin":
+        $data['acc'] = $_POST['acc'];
+        $data['pw'] = $_POST['pw'];
+        break;
     default:
         $data['text'] = $_POST['text'];
         $data['sh'] = 1;

@@ -38,7 +38,7 @@
 			<?php
 			$do=$_GET['do']??"home";
 $file="front/".$do.".php";
-include file_exists($file)?$file:"backend/home.php";
+include file_exists($file)?$file:"front/home.php";
 ?>
 			
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">

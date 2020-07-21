@@ -14,6 +14,10 @@ foreach ($_POST['id'] as $key => $id) {
             case "title":
                 $data['text'] = $_POST['text'][$key];
                 $data['sh'] = ($_POST['sh'] == $id) ? 1 : 0;
+            break;
+            case "admin":
+                $data['acc'] = $_POST['acc'][$key];
+                $data['pw'] = $_POST['pw'][$key];
                 break;
             default:
                 @$data['text'] = $_POST['text'][$key];
