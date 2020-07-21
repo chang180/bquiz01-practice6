@@ -58,12 +58,15 @@ class DB{
         if(isset($arg['id'])){
             foreach($arg as $k=>$v) $tmp[]="`$k`='$v'";
             $sql=sprintf("UPDATE %s SET %s WHERE `id`='%s'",$this->table,implode(",",$tmp),$arg['id']);
-        }else $sql=sprintf("INSERT INTO %s (`%s`) VALUES ('%s')",$this->table, implode(array_keys($arg)),implode($arg));
+        }else $sql=sprintf("INSERT INTO %s (`%s`) VALUES ('%s')",$this->table, implode("`,`",array_keys($arg)),implode("','",$arg));
+    //     echo $sql;
+    // exit;
         return $this->pdo->exec($sql);
     }
 }
+
 function to($url){
-    header("location:$url");
+    header("location:".$url);
 }
 
 $Ad=new DB('ad');
@@ -77,6 +80,7 @@ $Menu=new DB('menu');
 $Title=new DB('title');
 $total=$Total->find(1);
 $bottom=$Bottom->find(1);
+$title=$Title->find(['sh'=>1]);
 
 if(empty($_SESSION['visited'])){
     $_SESSION['visited']=1;
