@@ -1,9 +1,9 @@
-<h3>更新圖片</h3>
+<h3>更新動畫</h3>
 <hr>
 <form action="api/upload.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td>標題區圖片：</td>
+            <td>動畫圖片：</td>
             <td><input type="file" name="name"></td>
             <input type="hidden" name="id" value="<?= $_GET['id']; ?>">
         </tr>
