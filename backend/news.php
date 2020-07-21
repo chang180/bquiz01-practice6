@@ -13,7 +13,15 @@ $table = $_GET['do'];
                 </tr>
                 <?php
                 $db=new DB($table);
-                $rows = $db->all();
+                $total=$db->count();
+                $div=4;
+                $pages=ceil($total/$div);
+                $now=$_GET['p']??"1";
+                $start=($now-1)*$div;
+                $prev=(($now-1)>0)?($now-1):$now;
+                $next=(($now+1)<=$pages)?($now+1):$now;
+                $rows = $db->all([]," LIMIT $start, $div ");
+
                 foreach ($rows as $row) {
                 ?>
                     <tr>
@@ -26,6 +34,16 @@ $table = $_GET['do'];
             </tbody>
             <input type="hidden" name="table" value="<?= $table; ?>">
         </table>
+        <?php
+    echo "<a href='?do=$table&p=$prev' style='text-decoration:none'> < </a>";
+for($i=1;$i<=$pages;$i++){
+$fontsize=($now==$i)?"30px":"20px";
+echo "<a href='?do=$table&p=$i' style='text-decoration:none;font-size:$fontsize'> $i </a>";
+}
+echo "<a href='?do=$table&p=$next' style='text-decoration:none'> > </a>";
+
+
+?>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>

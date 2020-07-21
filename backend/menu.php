@@ -16,18 +16,18 @@ $table = $_GET['do'];
                 </tr>
                 <?php
                 $db=new DB($table);
-                $rows = $db->all();
+                $rows = $db->all(['parent'=>0]);
                 foreach ($rows as $row) {
                 $parent=$db->count(['parent'=>$row['id']]);
                 ?>
                     <tr>
                         <td><input type="text" name="name[]" value="<?= $row['name']; ?>"></td>
                         <td><input type="text" name="text[]" value="<?= $row['text']; ?>"></td>
-                        <td><?=$row['parent'];?></td>
+                        <td><?=$parent;?></td>
                         <td><input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>></td>
                         <td><input type="checkbox" name="del[]" value="<?= $row['id']; ?>"></td>
                         <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
-                        <td><input type="button" onclick="op('#cover','#cvr','modal/submenu.php?do=<?= $table; ?>&id=<?= $row['id']; ?>')" value="編輯次選單"></td>
+                        <td><input type="button" onclick="op('#cover','#cvr','modal/submenu.php?do=<?= $table; ?>&parent=<?= $row['id']; ?>')" value="編輯次選單"></td>
                     </tr>
                 <?php } ?>
             </tbody>

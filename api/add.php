@@ -19,6 +19,11 @@ switch ($table) {
         $data['acc'] = $_POST['acc'];
         $data['pw'] = $_POST['pw'];
         break;
+    case "menu":
+        $data['name'] = $_POST['name'];
+        $data['text'] = $_POST['text'];
+        $data['sh'] = 1;
+        break;
     default:
         $data['text'] = $_POST['text'];
         $data['sh'] = 1;
