@@ -34,8 +34,7 @@ $menu=$Menu->all(['parent'=>0,'sh'=>1]);
 foreach ($menu as $m){
 	echo "<div class='mainmu'>";
 	echo "<a href='".$m['text']."'>".$m['name']."</a>";
-	$chk=$Menu->count(['parent'=>$m['id']]);
-	if($chk>0){
+	
 		$sub=$Menu->all(['parent'=>$m['id']]);
 		echo "<div class='mw'>";
 		foreach($sub as $su){
@@ -44,7 +43,7 @@ foreach ($menu as $m){
 			echo "</div>";
 		}
 		echo "</div>";
-	}
+	
 
 	echo "</div>";
 }
@@ -66,7 +65,7 @@ foreach ($menu as $m){
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
-					<div class="cent" onclick="pp(1)"><img src="icon/up.jpg"></div>
+					<img onclick="pp(1)" src="icon/up.jpg">
 <?php
 $img=$Image->all(['sh'=>1]);
 foreach($img as $key => $im){
